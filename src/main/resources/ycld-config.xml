@@ -1,0 +1,164 @@
+<?xml version="1.0" standalone="yes"?>
+<ycld-config>
+  <xs:schema id="ycld-config" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="ycld-config" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SampleRate">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="name" type="xs:string" minOccurs="0" />
+                <xs:element name="value" type="xs:int" minOccurs="0" />
+                <xs:element name="type" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="BitDepth">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="name" type="xs:string" minOccurs="0" />
+                <xs:element name="value" type="xs:int" minOccurs="0" />
+                <xs:element name="type" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="AudioFormat">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="name" type="xs:string" minOccurs="0" />
+                <xs:element name="extension" type="xs:string" minOccurs="0" />
+                <xs:element name="type" type="xs:string" minOccurs="0" />
+                <xs:element name="maxSampleRate" type="xs:int" minOccurs="0" />
+                <xs:element name="maxBitDepth" type="xs:int" minOccurs="0" />
+                <xs:element name="input" type="xs:boolean" minOccurs="0" />
+                <xs:element name="output" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <SampleRate>
+    <name>44.1kHz</name>
+    <value>44100</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>48kHz</name>
+    <value>48000</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>88.2kHz</name>
+    <value>88200</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>96kHz</name>
+    <value>96000</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>176.4kHz</name>
+    <value>176400</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>192kHz</name>
+    <value>192000</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>352.8kHz</name>
+    <value>352800</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>384kHz</name>
+    <value>384000</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>705.6kHz</name>
+    <value>705600</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>768kHz</name>
+    <value>768000</value>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>DSD64</name>
+    <value>2822400</value>
+    <type>DSD</type>
+  </SampleRate>
+  <SampleRate>
+    <name>DSD128</name>
+    <value>5644800</value>
+    <type>DSD</type>
+  </SampleRate>
+  <SampleRate>
+    <name>DSD256</name>
+    <value>11289600</value>
+    <type>DSD</type>
+  </SampleRate>
+  <SampleRate>
+    <name>DSD512</name>
+    <value>22579200</value>
+    <type>DSD</type>
+  </SampleRate>
+  <SampleRate>
+    <name>SAME</name>
+    <value>-1</value>
+    <type>DYN</type>
+  </SampleRate>
+  <SampleRate>
+    <name>NextSync</name>
+    <value>-2</value>
+    <type>DYN</type>
+  </SampleRate>
+  <SampleRate>
+    <name>MaxSync</name>
+    <value>-3</value>
+    <type>DYN</type>
+  </SampleRate>
+  <BitDepth>
+    <name>16bit</name>
+    <value>16</value>
+    <type>PCM</type>
+  </BitDepth>
+  <BitDepth>
+    <name>24bit</name>
+    <value>24</value>
+    <type>PCM</type>
+  </BitDepth>
+  <BitDepth>
+    <name>DSD</name>
+    <value>1</value>
+    <type>DSD</type>
+  </BitDepth>
+  <BitDepth>
+    <name>SAME</name>
+    <value>-1</value>
+    <type>DYN</type>
+  </BitDepth>
+  <AudioFormat>
+    <name>FLAC</name>
+    <extension>flac</extension>
+    <type>PCM</type>
+    <maxSampleRate>768000</maxSampleRate>
+    <maxBitDepth>24</maxBitDepth>
+    <input>true</input>
+    <output>true</output>
+  </AudioFormat>
+  <AudioFormat>
+    <name>DSD</name>
+    <extension>dsf</extension>
+    <type>DSD</type>
+    <maxSampleRate>22579200</maxSampleRate>
+    <maxBitDepth>1</maxBitDepth>
+    <output>true</output>
+  </AudioFormat>
+</ycld-config>
