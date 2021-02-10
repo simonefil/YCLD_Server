@@ -4,6 +4,8 @@ import Init.Server;
 import Support.Language;
 import Templates.Profile;
 import com.Utils.BaseClass;
+import com.Utils.Serializers.Json;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -24,8 +26,6 @@ public class LogitechMediaServerManager extends BaseClass {
         int tIndex = 2;
         String tCurrentLine;
         Profile tTempProfile;
-        String[] tSplittedLine;
-
 
 
         // Open custom-convert.conf
@@ -70,7 +70,6 @@ public class LogitechMediaServerManager extends BaseClass {
 
                 tTempProfile.CalculateDependingFields();
                 Server.Application.GetProfilesList().addProfile(tTempProfile);
-
             }
         }
         else
@@ -83,40 +82,40 @@ public class LogitechMediaServerManager extends BaseClass {
 
     }
 
-    private boolean pParseProfileName(String parLine, Profile parProfileDetail) {
+    private boolean pParseProfileName(String parLine, Profile parProfile) {
         boolean tOk = true;
         parLine = parLine.replace("# Profile name: ", "");
         parLine = parLine.replace(System.lineSeparator(), "");
 
-        parProfileDetail.setpProfileName(parLine);
+        parProfile.setProfileName(parLine);
         return tOk;
     }
 
-    private boolean pParseStdinStdoutMacAddr(String parLine, Profile parProfileDetail) {
+    private boolean pParseStdinStdoutMacAddr(String parLine, Profile parProfile) {
         boolean tOk = true;
         String[] tSplittedLine;
 
         tSplittedLine = parLine.split(" ");
-        parProfileDetail.setpStdinFormat(tSplittedLine[0]);
-        parProfileDetail.setpStdoutFormat(tSplittedLine[1]);
-        parProfileDetail.setpMacAddress(tSplittedLine[3]);
+        parProfile.setStdinFormat(tSplittedLine[0]);
+        parProfile.setStdoutFormat(tSplittedLine[1]);
+        parProfile.setMacAddress(tSplittedLine[3]);
         return tOk;
     }
 
-    private boolean pParseCommand(String parLine, Profile parProfileDetail) {
+    private boolean pParseCommand(String parLine, Profile parProfile) {
         boolean tOk = true;
         String[] tSplittedCommands;
         tSplittedCommands = parLine.split(" ");
 
         for (String tWord : tSplittedCommands){
             if (tWord.startsWith("--output-bit"))
-                parProfileDetail.setpBitDepth(tWord.replace("--output-bit=", ""));
+                parProfile.setBitDepth(tWord.replace("--output-bit=", ""));
 
             if (tWord.startsWith("--output-rate"))
-                parProfileDetail.setpSampleRate(tWord.replace("--output-rate=", ""));
+                parProfile.setSampleRate(tWord.replace("--output-rate=", ""));
 
             if (tWord.startsWith("--convolution"))
-                parProfileDetail.setpConvolutionImpulsesPath(tWord.replace("--convolution=", ""));
+                parProfile.setConvolutionImpulsesPath(tWord.replace("--convolution=", ""));
         }
         return tOk;
     }

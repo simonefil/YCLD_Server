@@ -19,17 +19,6 @@ public class Profile {
 
     //region Constructor
 
-    @JsonCreator
-    public Profile(String parProfileName, String parMacAddress, String parStdinFormat, String parStdoutFormat, String parSampleRate, String parBitDepth, String parConvolutionImpulsesPath) {
-        this.pProfileName = parProfileName;
-        this.pMacAddress = parMacAddress;
-        this.pStdinFormat = parStdinFormat;
-        this.pStdoutFormat = parStdoutFormat;
-        this.pSampleRate = parSampleRate;
-        this.pBitDepth = parBitDepth;
-        this.pConvolutionImpulsesPath = parConvolutionImpulsesPath;
-    }
-
     public Profile() {}
 
     //endregion
@@ -49,63 +38,79 @@ public class Profile {
 
     //region Getters and Setters
 
-    public String getpProfileName() {
+    public String getProfileName() {
         return pProfileName;
     }
 
-    public void setpProfileName(String pProfileName) {
+    public void setProfileName(String pProfileName) {
         this.pProfileName = pProfileName;
     }
 
-    public String getpMacAddress() {
+    public String getMacAddress() {
         if (pMacAddress == null || pMacAddress == "")
             return "*";
         else
             return pMacAddress;
     }
 
-    public void setpMacAddress(String pMacAddress) {
+    public void setMacAddress(String pMacAddress) {
         this.pMacAddress = pMacAddress;
     }
 
-    public String getpStdinFormat() {
+    public String getStdinFormat() {
         return pStdinFormat;
     }
 
-    public void setpStdinFormat(String pStdinFormat) {
+    public void setStdinFormat(String pStdinFormat) {
         this.pStdinFormat = pStdinFormat;
     }
 
-    public String getpStdoutFormat() {
+    public String getStdoutFormat() {
         return pStdoutFormat;
     }
 
-    public void setpStdoutFormat(String pStdoutFormat) {
+    public void setStdoutFormat(String pStdoutFormat) {
         this.pStdoutFormat = pStdoutFormat;
     }
 
-    public String getpSampleRate() {
+    public String getSampleRate() {
         return pSampleRate;
     }
 
-    public void setpSampleRate(String pSampleRate) {
+    public void setSampleRate(String pSampleRate) {
         this.pSampleRate = pSampleRate;
     }
 
-    public String getpBitDepth() {
+    public String getBitDepth() {
         return pBitDepth;
     }
 
-    public void setpBitDepth(String pBitDepth) {
+    public void setBitDepth(String pBitDepth) {
         this.pBitDepth = pBitDepth;
     }
 
-    public String getpConvolutionImpulsesPath() {
+    public String getConvolutionImpulsesPath() {
         return pConvolutionImpulsesPath;
     }
 
-    public void setpConvolutionImpulsesPath(String pConvolutionImpulsesPath) {
+    public void setConvolutionImpulsesPath(String pConvolutionImpulsesPath) {
         this.pConvolutionImpulsesPath = pConvolutionImpulsesPath;
+    }
+
+    public boolean ispConvolutionEnabled() {
+        return pConvolutionEnabled;
+    }
+
+    public void setpConvolutionEnabled(boolean pConvolutionEnabled) {
+        this.pConvolutionEnabled = pConvolutionEnabled;
+    }
+
+    public boolean ispResamplingEnabled() {
+        return pResamplingEnabled;
+    }
+
+    public void setpResamplingEnabled(boolean pResamplingEnabled) {
+        this.pResamplingEnabled = pResamplingEnabled;
     }
 
     //endregion
@@ -115,8 +120,8 @@ public class Profile {
     public String toCustomConvert() {
         String customConvertConfig = "";
 
-        customConvertConfig += "# Profile name: " + this.getpProfileName() + System.lineSeparator();
-        customConvertConfig += this.getpStdinFormat() + " " + this.getpStdoutFormat() + " * " + this.getpMacAddress() + System.lineSeparator();
+        customConvertConfig += "# Profile name: " + this.getProfileName() + System.lineSeparator();
+        customConvertConfig += this.getStdinFormat() + " " + this.getStdoutFormat() + " * " + this.getMacAddress() + System.lineSeparator();
         customConvertConfig += "    # IFT:{START=--skip=%t}U:{END=--until=%v}" + System.lineSeparator();
 
         return customConvertConfig;
