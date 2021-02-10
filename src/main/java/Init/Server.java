@@ -1,6 +1,7 @@
 package Init;
 
 import IO.LogitechMediaServerManager;
+import Support.CorsFilter;
 import Templates.Configuration;
 import Templates.ProfilesList;
 import WebMethods.GetConfiguration;
@@ -22,19 +23,20 @@ public class Server {
         Application = new Server();
         Application.pConfiguration = new Configuration();
         Application.pProfilesList = new ProfilesList();
-        Application.pLMSManager = new LogitechMediaServerManager("C:\\Users\\Simone\\new.txt");
+        //Application.pLMSManager = new LogitechMediaServerManager("C:\\Users\\Simone\\new.txt");
 
         try {
             // Read config
             ClassLoader classLoader = Server.class.getClassLoader();
             Application.SetConfiguration(Xml.serializer().fromInputStream(classLoader.getResourceAsStream("ycld-config.xml"), Configuration.class));
-            Application.pLMSManager.ReadLMSCustomConvert();
+            //Application.pLMSManager.ReadLMSCustomConvert();
 
             // WebServer config
             port(6969);
             threadPool(tThreadNumber);
             staticFileLocation("/public");
             init();
+            CorsFilter.apply();
 
             // Define routes
             get("/getConfiguration", GetConfiguration.getConfiguration);
