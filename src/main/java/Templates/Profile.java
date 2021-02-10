@@ -53,64 +53,64 @@ public class Profile {
             return pMacAddress;
     }
 
-    public void setMacAddress(String pMacAddress) {
-        this.pMacAddress = pMacAddress;
+    public void setMacAddress(String parMacAddress) {
+        this.pMacAddress = parMacAddress;
     }
 
     public String getStdinFormat() {
-        return pStdinFormat;
+        return this.pStdinFormat;
     }
 
-    public void setStdinFormat(String pStdinFormat) {
-        this.pStdinFormat = pStdinFormat;
+    public void setStdinFormat(String parStdinFormat) {
+        this.pStdinFormat = parStdinFormat;
     }
 
     public String getStdoutFormat() {
-        return pStdoutFormat;
+        return this.pStdoutFormat;
     }
 
-    public void setStdoutFormat(String pStdoutFormat) {
-        this.pStdoutFormat = pStdoutFormat;
+    public void setStdoutFormat(String parStdoutFormat) {
+        this.pStdoutFormat = parStdoutFormat;
     }
 
     public String getSampleRate() {
-        return pSampleRate;
+        return this.pSampleRate;
     }
 
-    public void setSampleRate(String pSampleRate) {
-        this.pSampleRate = pSampleRate;
+    public void setSampleRate(String parSampleRate) {
+        this.pSampleRate = parSampleRate;
     }
 
     public String getBitDepth() {
-        return pBitDepth;
+        return this.pBitDepth;
     }
 
-    public void setBitDepth(String pBitDepth) {
-        this.pBitDepth = pBitDepth;
+    public void setBitDepth(String parBitDepth) {
+        this.pBitDepth = parBitDepth;
     }
 
     public String getConvolutionImpulsesPath() {
-        return pConvolutionImpulsesPath;
+        return this.pConvolutionImpulsesPath;
     }
 
-    public void setConvolutionImpulsesPath(String pConvolutionImpulsesPath) {
-        this.pConvolutionImpulsesPath = pConvolutionImpulsesPath;
+    public void setConvolutionImpulsesPath(String parConvolutionImpulsesPath) {
+        this.pConvolutionImpulsesPath = parConvolutionImpulsesPath;
     }
 
-    public boolean ispConvolutionEnabled() {
-        return pConvolutionEnabled;
+    public boolean isConvolutionEnabled() {
+        return this.pConvolutionEnabled;
     }
 
-    public void setpConvolutionEnabled(boolean pConvolutionEnabled) {
-        this.pConvolutionEnabled = pConvolutionEnabled;
+    public void setConvolutionEnabled(boolean parConvolutionEnabled) {
+        this.pConvolutionEnabled = parConvolutionEnabled;
     }
 
-    public boolean ispResamplingEnabled() {
-        return pResamplingEnabled;
+    public boolean isResamplingEnabled() {
+        return this.pResamplingEnabled;
     }
 
-    public void setpResamplingEnabled(boolean pResamplingEnabled) {
-        this.pResamplingEnabled = pResamplingEnabled;
+    public void setResamplingEnabled(boolean parResamplingEnabled) {
+        this.pResamplingEnabled = parResamplingEnabled;
     }
 
     //endregion
