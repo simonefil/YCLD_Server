@@ -3,7 +3,6 @@ package IO;
 import Init.Server;
 import Support.Language;
 import Templates.Profile;
-import Templates.ProfileDetail;
 import com.Utils.BaseClass;
 import java.io.*;
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ public class LogitechMediaServerManager extends BaseClass {
         ArrayList<String> tCustomConvertLines = new ArrayList<>();
         int tIndex = 2;
         String tCurrentLine;
-        ProfileDetail tTempProfileDetail;
         Profile tTempProfile;
         String[] tSplittedLine;
 
@@ -55,27 +53,24 @@ public class LogitechMediaServerManager extends BaseClass {
         if (tOk && (tCustomConvertLines.size()-1) % 5 == 0) {
             while(tIndex < tCustomConvertLines.size()) {
                 tTempProfile = new Profile();
-                tTempProfileDetail = new ProfileDetail();
 
                 tCurrentLine = tCustomConvertLines.get(tIndex);
-                tOk = tOk && this.pParseProfileName(tCurrentLine, tTempProfileDetail);
+                tOk = tOk && this.pParseProfileName(tCurrentLine, tTempProfile);
 
                 tIndex++;
                 tCurrentLine = tCustomConvertLines.get(tIndex);
-                tOk = tOk && this.pParseStdinStdoutMacAddr(tCurrentLine, tTempProfileDetail);
+                tOk = tOk && this.pParseStdinStdoutMacAddr(tCurrentLine, tTempProfile);
 
                 tIndex++;
                 tIndex++;
                 tCurrentLine = tCustomConvertLines.get(tIndex);
-                tOk = tOk && this.pParseCommand(tCurrentLine, tTempProfileDetail);
+                tOk = tOk && this.pParseCommand(tCurrentLine, tTempProfile);
                 tIndex++;
                 tIndex++;
 
-                if (tTempProfileDetail != null) {
-                    tTempProfile.setProfileDetail(tTempProfileDetail);
-                    tTempProfile.PopulateInfo();
-                    Server.Application.GetProfilesList().addProfile(tTempProfile);
-                }
+                tTempProfile.CalculateDependingFields();
+                Server.Application.GetProfilesList().addProfile(tTempProfile);
+
             }
         }
         else
@@ -88,40 +83,40 @@ public class LogitechMediaServerManager extends BaseClass {
 
     }
 
-    private boolean pParseProfileName(String parLine, ProfileDetail parProfileDetail) {
+    private boolean pParseProfileName(String parLine, Profile parProfileDetail) {
         boolean tOk = true;
         parLine = parLine.replace("# Profile name: ", "");
         parLine = parLine.replace(System.lineSeparator(), "");
 
-        parProfileDetail.setProfileName(parLine);
+        parProfileDetail.setpProfileName(parLine);
         return tOk;
     }
 
-    private boolean pParseStdinStdoutMacAddr(String parLine, ProfileDetail parProfileDetail) {
+    private boolean pParseStdinStdoutMacAddr(String parLine, Profile parProfileDetail) {
         boolean tOk = true;
         String[] tSplittedLine;
 
         tSplittedLine = parLine.split(" ");
-        parProfileDetail.setStdinFormat(tSplittedLine[0]);
-        parProfileDetail.setStdoutFormat(tSplittedLine[1]);
-        parProfileDetail.setMacAddress(tSplittedLine[3]);
+        parProfileDetail.setpStdinFormat(tSplittedLine[0]);
+        parProfileDetail.setpStdoutFormat(tSplittedLine[1]);
+        parProfileDetail.setpMacAddress(tSplittedLine[3]);
         return tOk;
     }
 
-    private boolean pParseCommand(String parLine, ProfileDetail parProfileDetail) {
+    private boolean pParseCommand(String parLine, Profile parProfileDetail) {
         boolean tOk = true;
         String[] tSplittedCommands;
         tSplittedCommands = parLine.split(" ");
 
         for (String tWord : tSplittedCommands){
             if (tWord.startsWith("--output-bit"))
-                parProfileDetail.setBitDepth(tWord.replace("--output-bit=", ""));
+                parProfileDetail.setpBitDepth(tWord.replace("--output-bit=", ""));
 
             if (tWord.startsWith("--output-rate"))
-                parProfileDetail.setSampleRate(tWord.replace("--output-rate=", ""));
+                parProfileDetail.setpSampleRate(tWord.replace("--output-rate=", ""));
 
             if (tWord.startsWith("--convolution"))
-                parProfileDetail.setConvolutionImpulsesPath(tWord.replace("--convolution=", ""));
+                parProfileDetail.setpConvolutionImpulsesPath(tWord.replace("--convolution=", ""));
         }
         return tOk;
     }
