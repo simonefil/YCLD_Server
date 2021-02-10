@@ -112,17 +112,32 @@
   <SampleRate>
     <name>SAME</name>
     <value>-1</value>
-    <type>DYN</type>
+    <type>PCM</type>
   </SampleRate>
   <SampleRate>
     <name>NextSync</name>
     <value>-2</value>
-    <type>DYN</type>
+    <type>PCM</type>
   </SampleRate>
   <SampleRate>
     <name>MaxSync</name>
     <value>-3</value>
-    <type>DYN</type>
+    <type>PCM</type>
+  </SampleRate>
+  <SampleRate>
+    <name>SAME</name>
+    <value>-1</value>
+    <type>DSD</type>
+  </SampleRate>
+  <SampleRate>
+    <name>NextSync</name>
+    <value>-2</value>
+    <type>DSD</type>
+  </SampleRate>
+  <SampleRate>
+    <name>MaxSync</name>
+    <value>-3</value>
+    <type>DSD</type>
   </SampleRate>
   <BitDepth>
     <name>16bit</name>
@@ -142,7 +157,12 @@
   <BitDepth>
     <name>SAME</name>
     <value>-1</value>
-    <type>DYN</type>
+    <type>PCM</type>
+  </BitDepth>
+  <BitDepth>
+    <name>SAME</name>
+    <value>-1</value>
+    <type>DSD</type>
   </BitDepth>
   <AudioFormat>
     <name>FLAC</name>
