@@ -1,6 +1,8 @@
 package IO;
 
+import Init.Server;
 import Support.Language;
+import Templates.Profile;
 import Templates.ProfileDetail;
 import com.Utils.BaseClass;
 import java.io.*;
@@ -23,7 +25,10 @@ public class LogitechMediaServerManager extends BaseClass {
         int tIndex = 2;
         String tCurrentLine;
         ProfileDetail tTempProfileDetail;
+        Profile tTempProfile;
         String[] tSplittedLine;
+
+
 
         // Open custom-convert.conf
         tCustomConvert = new File(this.pCustomConvertDir);
@@ -49,6 +54,7 @@ public class LogitechMediaServerManager extends BaseClass {
         // Check if the file syntax is correct
         if (tOk && (tCustomConvertLines.size()-1) % 5 == 0) {
             while(tIndex < tCustomConvertLines.size()) {
+                tTempProfile = new Profile();
                 tTempProfileDetail = new ProfileDetail();
 
                 tCurrentLine = tCustomConvertLines.get(tIndex);
@@ -64,6 +70,12 @@ public class LogitechMediaServerManager extends BaseClass {
                 tOk = tOk && this.pParseCommand(tCurrentLine, tTempProfileDetail);
                 tIndex++;
                 tIndex++;
+
+                if (tTempProfileDetail != null) {
+                    tTempProfile.setProfileDetail(tTempProfileDetail);
+                    tTempProfile.PopulateInfo();
+                    Server.Application.GetProfilesList().addProfile(tTempProfile);
+                }
             }
         }
         else

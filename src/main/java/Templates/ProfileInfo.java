@@ -2,13 +2,14 @@ package Templates;
 
 public class ProfileInfo {
 
-    private String profileName;
-    private String macAddress;
-    private String stdinFormat;
-    private String stdoutFormat;
-    private boolean resampling;
-    private boolean convolution;
+    private String profileName = "";
+    private String macAddress = "";
+    private String stdinFormat = "";
+    private String stdoutFormat = "";
+    private boolean resampling = false;
+    private boolean convolution = false;
 
+    public ProfileInfo() {}
     public ProfileInfo(String profileName, String macAddress, String stdinFormat, String stdoutFormat, boolean resampling, boolean convolution) {
         this.profileName = profileName;
         this.macAddress = macAddress;

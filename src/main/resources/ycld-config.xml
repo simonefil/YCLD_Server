@@ -166,7 +166,7 @@
   </BitDepth>
   <AudioFormat>
     <name>FLAC</name>
-    <extension>flac</extension>
+    <extension>flc</extension>
     <type>PCM</type>
     <maxSampleRate>768000</maxSampleRate>
     <maxBitDepth>24</maxBitDepth>

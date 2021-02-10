@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class ProfileDetail {
 
     //region Private Variables
-    private String profileName;
-    private String macAddress;
-    private String stdinFormat;
-    private String stdoutFormat;
-    private String sampleRate;
-    private String bitDepth;
-    private String convolutionImpulsesPath;
+    private String profileName = "";
+    private String macAddress = "";
+    private String stdinFormat = "";
+    private String stdoutFormat = "";
+    private String sampleRate = "";
+    private String bitDepth = "";
+    private String convolutionImpulsesPath = "";
 
     //endregion
 
